@@ -1,7 +1,6 @@
 #ifndef SHELL_H
 #define SHELL_H
 
-/*---LIBRARIES---*/
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
@@ -12,20 +11,18 @@
 #include <signal.h>
 #include "main.h"
 
-/*---Macros---*/
+
 #define TOK_DELIM " \t\r\n\a\""
 extern char **environ;
 
-/*---PROTOTYPES---*/
-/* main.c */
+
+
 void ctrlc(int ctr_c __attribute__((unused)));
 
-/* shell_interactive.c */
 char *gtinput(void);
 char **toknise(char *str);
 int exct(char **args);
 
-/* execute_args */
 int start_fork(char **args);
 int is_absolute_path(const char *path);
 int is_builtin(const char *command);
@@ -39,15 +36,10 @@ char *_strcat(char *dest, const char *src);
 char *_strdup(char *str);
 int _strcmp(const char *s1, const char *s2);
 
-/* shell_no_interactive */
-
-/*---Builtin func---*/
 int builtin_cd(char **args);
 int builtin_exit(char **args);
 int builtin_env(char **args);
 int _atoi(char *s);
-
-/*--STRUCTURES--*/
 
 /**
  * struct BuiltinFunction - select the collect builitin function
