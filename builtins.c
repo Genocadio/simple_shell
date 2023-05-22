@@ -45,12 +45,10 @@ int builtin_env(char **args)
  */
 int builtin_exit(char **args)
 {
-	/* exit with status */
 	if (args[1])
 	{
 		return (_atoi(args[1]));
 	}
-	/* exit success */
 	else
 	{
 		return (0);
