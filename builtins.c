@@ -54,32 +54,49 @@ int builtin_exit(char **args)
 		return (0);
 	}
 }
+
 /**
- * _atoi - function that conert input to integer
- * @s: charcter input
- * Return: integer value
+ * builtin_setenv - function to set environment variable
+ * @args: variable to set
+ * Return: -1
  */
-int _atoi(char *s)
+int builtin_setenv(char **args)
 {
-	int sign = 1, i = 0, num = 0;
+	int ret;
 
-	if (s[i] == '-')
+	if (args[1] == NULL || args[2] == NULL)
 	{
-		sign = -1;
-		i++;
+		_printf("setenv: Invalid arguments to setenv\n");
+		return (-1);
 	}
-	while (s[i] != '\0')
+	ret = setenv(args[1], args[2], 1);
+	if (ret != 0)
 	{
-		if (s[i] >= '0' && s[i] <= '9')
-		{
-			num = num * 10 + (s[i] - '0');
-		}
-		else
-		{
-			break;
-		}
-		i++;
+		_printf("setenv: Failed to set environment variable\n");
 	}
 
-	return (sign * num);
+	return (-1);
+}
+
+/**
+ * builtin_unsetenv - function to unset environment variable
+ * @args: variable to unset
+ * Return: -1
+ */
+int builtin_unsetenv(char **args)
+{
+	int ret;
+
+	if (args[1] == NULL)
+	{
+		_printf("unsetenv: Missing variable name\n");
+		return (-1);
+	}
+	ret = unsetenv(args[1]);
+	if (ret != 0 && args[1] != NULL)
+	{
+		_printf("unsetenv: Failed to unset environment variable\n");
+	}
+
+	return (-1);
 }

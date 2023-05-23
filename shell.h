@@ -17,7 +17,8 @@ extern char **environ;
 
 
 
-void ctrlc(int ctr_c __attribute__((unused)));
+void ctrlc(int ctr_c);
+int _atoi(char *s);
 
 char *gtinput(void);
 char **toknise(char *str);
@@ -39,7 +40,9 @@ int _strcmp(const char *s1, const char *s2);
 int builtin_cd(char **args);
 int builtin_exit(char **args);
 int builtin_env(char **args);
-int _atoi(char *s);
+int builtin_setenv(char **args);
+int builtin_unsetenv(char **args);
+
 
 /**
  * struct BuiltinFunction - select the collect builitin function

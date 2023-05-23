@@ -20,7 +20,9 @@ int is_builtin(const char *command)
 	BuiltinFunction builtin_func_list[] = {
 		{"cd", &builtin_cd},
 		{"env", &builtin_env},
-		{"exit", &builtin_exit}
+		{"exit", &builtin_exit},
+		{"setenv", &builtin_setenv},
+		{"unsetenv", &builtin_unsetenv}
 		};
 	size_t num = sizeof(builtin_func_list) / sizeof(BuiltinFunction);
 
@@ -42,7 +44,9 @@ int execute_builtin(char **args)
 	BuiltinFunction builtin_func_list[] = {
 		{"cd", &builtin_cd},
 		{"env", &builtin_env},
-		{"exit", &builtin_exit}
+		{"exit", &builtin_exit},
+		{"setenv", &builtin_setenv},
+		{"unsetenv", &builtin_unsetenv}
 		};
 	size_t num = sizeof(builtin_func_list) / sizeof(BuiltinFunction);
 
