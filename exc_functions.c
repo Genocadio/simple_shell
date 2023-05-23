@@ -38,6 +38,9 @@ int exct(char **args)
 	if (args[0] == NULL)
 		return (-1);
 
+	if (args[0][0] == '#')
+		return (-1);
+
 	if (is_absolute_path(args[0]))
 	{
 		if (access(args[0], F_OK) == 0)
@@ -95,7 +98,7 @@ int my_execvp(const char *command, char *const args[])
 	{
 		return ((execve(command, args, NULL) != -1) ? 0 : -1);
 	}
-	char *path = getenv("PATH");
+	char *path = _getenv("PATH");
 
 	if (path == NULL)
 	{

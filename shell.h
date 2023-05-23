@@ -40,8 +40,10 @@ int _strcmp(const char *s1, const char *s2);
 int builtin_cd(char **args);
 int builtin_exit(char **args);
 int builtin_env(char **args);
-int builtin_setenv(char **args);
-int builtin_unsetenv(char **args);
+
+
+char *_getenv(const char *var);
+int _strncmp(const char *str1, const char *str2, int n);
 
 
 /**

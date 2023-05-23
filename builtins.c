@@ -1,8 +1,8 @@
 #include "shell.h"
 
 /**
- * builtin_cd - changes the working dir of the current shell executon env
- * @args: target directory
+ * builtin_cd - change working directory
+ * @args: directory to navigate to
  * Return: 1 one success, 0 otherwise.
  */
 int builtin_cd(char **args)
@@ -41,7 +41,7 @@ int builtin_env(char **args)
 /**
  * builtin_exit - exit a process
  * @args: arguments
- * Return: 0 if success
+ * Return: 0 or other exit status
  */
 int builtin_exit(char **args)
 {
@@ -53,50 +53,4 @@ int builtin_exit(char **args)
 	{
 		return (0);
 	}
-}
-
-/**
- * builtin_setenv - function to set environment variable
- * @args: variable to set
- * Return: -1
- */
-int builtin_setenv(char **args)
-{
-	int ret;
-
-	if (args[1] == NULL || args[2] == NULL)
-	{
-		_printf("setenv: Invalid arguments to setenv\n");
-		return (-1);
-	}
-	ret = setenv(args[1], args[2], 1);
-	if (ret != 0)
-	{
-		_printf("setenv: Failed to set environment variable\n");
-	}
-
-	return (-1);
-}
-
-/**
- * builtin_unsetenv - function to unset environment variable
- * @args: variable to unset
- * Return: -1
- */
-int builtin_unsetenv(char **args)
-{
-	int ret;
-
-	if (args[1] == NULL)
-	{
-		_printf("unsetenv: Missing variable name\n");
-		return (-1);
-	}
-	ret = unsetenv(args[1]);
-	if (ret != 0 && args[1] != NULL)
-	{
-		_printf("unsetenv: Failed to unset environment variable\n");
-	}
-
-	return (-1);
 }

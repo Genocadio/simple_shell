@@ -20,9 +20,7 @@ int is_builtin(const char *command)
 	BuiltinFunction builtin_func_list[] = {
 		{"cd", &builtin_cd},
 		{"env", &builtin_env},
-		{"exit", &builtin_exit},
-		{"setenv", &builtin_setenv},
-		{"unsetenv", &builtin_unsetenv}
+		{"exit", &builtin_exit}
 		};
 	size_t num = sizeof(builtin_func_list) / sizeof(BuiltinFunction);
 
@@ -44,9 +42,7 @@ int execute_builtin(char **args)
 	BuiltinFunction builtin_func_list[] = {
 		{"cd", &builtin_cd},
 		{"env", &builtin_env},
-		{"exit", &builtin_exit},
-		{"setenv", &builtin_setenv},
-		{"unsetenv", &builtin_unsetenv}
+		{"exit", &builtin_exit}
 		};
 	size_t num = sizeof(builtin_func_list) / sizeof(BuiltinFunction);
 
@@ -64,7 +60,7 @@ int execute_builtin(char **args)
  */
 int is_command_in_path(const char *command)
 {
-	char *path = getenv("PATH");
+	char *path = _getenv("PATH");
 
 	if (path != NULL)
 	{
