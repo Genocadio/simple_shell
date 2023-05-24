@@ -51,6 +51,6 @@ int builtin_exit(char **args)
 	}
 	else
 	{
-		return (0);
+		exit(0);
 	}
 }
