@@ -23,8 +23,9 @@ int is_builtin(const char *command)
 		{"exit", &builtin_exit}
 		};
 	size_t num = sizeof(builtin_func_list) / sizeof(BuiltinFunction);
+	size_t i;
 
-	for (size_t i = 0; i < num; i++)
+	for (i = 0; i < num; i++)
 	{
 		if (_strcmp(command, builtin_func_list[i].name) == 0)
 			return (1);
@@ -45,8 +46,9 @@ int execute_builtin(char **args)
 		{"exit", &builtin_exit}
 		};
 	size_t num = sizeof(builtin_func_list) / sizeof(BuiltinFunction);
+	size_t i;
 
-	for (size_t i = 0; i < num; i++)
+	for (i = 0; i < num; i++)
 	{
 		if (_strcmp(args[0], builtin_func_list[i].name) == 0)
 			return ((*(builtin_func_list[i].func))(args));
@@ -65,6 +67,7 @@ int is_command_in_path(const char *command)
 	if (path != NULL)
 	{
 		char *path_env = _strdup(path);
+		char *path_token;
 
 		if (path_env == NULL)
 		{
@@ -72,8 +75,7 @@ int is_command_in_path(const char *command)
 			return (-1);
 		}
 
-		char *path_token = strtok(path_env, ":");
-
+		path_token = strtok(path_env, ":");
 		while (path_token != NULL)
 		{
 			char *resolved_path = construct_path(path_token, command);

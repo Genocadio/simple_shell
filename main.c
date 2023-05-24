@@ -6,8 +6,8 @@
  */
 void ctrlc(int ctr_c)
 {
-	(void)ctr_c;
 	const char *prompt = "\nGeno_Agaba$";
+	(void)ctr_c;
 
 	write(1, prompt, 12);
 }

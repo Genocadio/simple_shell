@@ -94,22 +94,23 @@ char *construct_path(const char *path_token, const char *command)
  */
 int my_execvp(const char *command, char *const args[])
 {
+	char *path;
+	char *path_env;
+	char *path_token;
+
 	if (access(command, F_OK) == 0)
 	{
 		return ((execve(command, args, NULL) != -1) ? 0 : -1);
 	}
-	char *path = _getenv("PATH");
-
+	path = _getenv("PATH");
 	if (path == NULL)
 	{
 		return (-1);
 	}
-	char *path_env = _strdup(path);
-
+	path_env = _strdup(path);
 	if (path_env == NULL)
 		return (-1);
-	char *path_token = strtok(path_env, ":");
-
+	path_token = strtok(path_env, ":");
 	while (path_token != NULL)
 	{
 		char *resolved_path = construct_path(path_token, command);
