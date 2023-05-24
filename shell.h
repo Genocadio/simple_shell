@@ -44,6 +44,7 @@ int builtin_env(char **args);
 
 char *_getenv(const char *var);
 int _strncmp(const char *str1, const char *str2, int n);
+void sortenv(char **env);
 
 
 /**
