@@ -53,21 +53,22 @@ int _strncmp(const char *str1, const char *str2, int n)
 */
 void sortenv(char **env)
 {
-    int i, j;
-    int n = 0;
+	char *str;
+	int i, j;
+	int n = 0;
 
-    while (env[n] != NULL)
-        n++;
-    for (i = 0; i < n - 1; i++)
+	while (env[n] != NULL)
+		n++;
+	for (i = 0; i < n - 1; i++)
 	{
-        for (j = 0; j < n - i - 1; j++)
+		for (j = 0; j < n - i - 1; j++)
 		{
-            if (_strcmp(env[j], env[j + 1]) > 0)
+			if (_strcmp(env[j], env[j + 1]) > 0)
 			{
-                char *temp = env[j];
-                env[j] = env[j + 1];
-                env[j + 1] = temp;
-            }
-        }
-    }
+				str = env[j];
+				env[j] = env[j + 1];
+				env[j + 1] = str;
+			}
+		}
+	}
 }
