@@ -99,12 +99,12 @@ char **toknise(char *str)
 	int buffsize = 70;
 	char **args = malloc(buffsize * sizeof(char *));
 
-	token = strtok(str, TOK_DELIM);
+	token = strtok(str, DELIM);
 	args_n = 0;
 	while (token != NULL)
 	{
 		args[args_n] = token;
-		token = strtok(NULL, TOK_DELIM);
+		token = strtok(NULL, DELIM);
 		args_n++;
 	}
 	args[args_n] = NULL;
