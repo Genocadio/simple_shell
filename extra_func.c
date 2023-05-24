@@ -46,29 +46,3 @@ int _strncmp(const char *str1, const char *str2, int n)
 	}
 	return (0);
 }
-/**
-* sortenv - function to sort environment variables
-* @env: variable to sort
-* Return: void
-*/
-void sortenv(char **env)
-{
-	char *str;
-	int i, j;
-	int n = 0;
-
-	while (env[n] != NULL)
-		n++;
-	for (i = 0; i < n - 1; i++)
-	{
-		for (j = 0; j < n - i - 1; j++)
-		{
-			if (_strcmp(env[j], env[j + 1]) > 0)
-			{
-				str = env[j];
-				env[j] = env[j + 1];
-				env[j + 1] = str;
-			}
-		}
-	}
-}
